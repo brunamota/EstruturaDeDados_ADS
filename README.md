@@ -22,7 +22,7 @@ Quinta - 21h às 22h
 
 ## Ferramentas utilizada na matéria
 
-<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> IDE - Intellij - https://netbeans.apache.org/front/main/index.html](https://www.jetbrains.com/pt-br/idea/download/?section=windows
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> IDE - Intellij - https://www.jetbrains.com/pt-br/idea/download/?section=windows
 
 <img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> Java - https://www.oracle.com/technetwork/java/javase/downloads
 
