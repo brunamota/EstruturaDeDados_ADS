@@ -7,19 +7,19 @@
 ### Análise e Desenvolvimento de Sistemas
 ### Docente: Bruna Mota Barbosa
 
-## Horário das Aulas
-
-Quinta - 21h às 22h
-
 ## Datas Importantes
 
-<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> 1ª Aula Síncrona: 25/02
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> 1ª Aula Síncrona: 25/02/2026 - 21h às 22h
 
-<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> 2ª Aula Síncrona: 12/03 
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> 2ª Aula Síncrona: 12/03/2026 - 21h às 22h
 
-<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> 3ª Aula Síncrona: 26/03
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> 3ª Aula Síncrona: 26/03/2026 - 21h às 22h
+
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> Avaliações Presenciais: 07/04/2026 a 11/04/2026
 
 <img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> Término do Fórum Avaliativo: 07/04 até 23:59h
+
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> Término das Aulas: 19/04/2026
 
 ## Ferramentas utilizada na matéria
 
@@ -37,5 +37,6 @@ Quinta - 21h às 22h
 
 <img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> [Plano de Ensino](https://github.com/user-attachments/files/25556078/Plano_ensino_ED_ADS_2026.pdf)
 
-<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> [Aulas]
+## Aulas
 
+(Aula 01 - Modularização e Objetos em Java)[https://github.com/brunamota/EstruturaDeDados_ADS/blob/main/Aulas/Aula01.md]
