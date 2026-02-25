@@ -39,4 +39,4 @@
 
 ## Aulas
 
-[Aula 01 - Modularização e Objetos em Java](https://github.com/brunamota/EstruturaDeDados_ADS/blob/main/Aulas/Aula01.md)
+<img width="15" height="15" alt="iconGit" src="https://github.com/user-attachments/assets/622e0f12-20c2-42c3-a07e-f2aed35d99d7"/> [Aula 01 - Modularização e Objetos em Java](https://github.com/brunamota/EstruturaDeDados_ADS/blob/main/Aulas/Aula01.md)
