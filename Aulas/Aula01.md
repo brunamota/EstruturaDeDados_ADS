@@ -6,7 +6,7 @@ A organização do código-fonte em blocos que possam ser reaproveitados e melho
 
 * **Classe**: Funciona como um modelo, planta ou projeto para a criação de objetos.
 * **Objeto**: É a instância real e física que existe na memória em tempo de execução.
-* **Operador `new**`**: Comando usado para criar um novo objeto, alocando espaço na memória e retornando uma referência para essa instância.
+* **Operador `new**` **: Comando usado para criar um novo objeto, alocando espaço na memória e retornando uma referência para essa instância.
 * **Métodos**: São blocos de código definidos em uma classe que podem ser invocados para executar as operações neles descritas.
 
 ### Entendendo a Referência (A Metáfora do Controle Remoto)
