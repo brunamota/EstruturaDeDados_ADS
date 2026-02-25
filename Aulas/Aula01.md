@@ -8,57 +8,18 @@ A organização do código-fonte em blocos que possam ser reaproveitados e melho
 * **Objeto**: É a instância real e física que existe na memória em tempo de execução.
 * **Operador `new`**: Comando usado para criar um novo objeto, alocando espaço na memória e retornando uma referência para essa instância.
 * **Métodos**: São blocos de código definidos em uma classe que podem ser invocados para executar as operações neles descritas.
-
-### Entendendo a Referência (A Metáfora do Controle Remoto)
-
-Uma variável de referência é capaz de armazenar a localização (endereço na memória) de um objeto.
-
-* **O Controle Remoto**: Imagine que a variável é o controle remoto e o objeto é o aparelho de TV.
-
-
-* **Invocação de Métodos**: Usamos o "controle" (variável de referência) para acionar um "botão" (método) do objeto através do operador ponto (`.`).
-
-* **Exemplo Prático**:
-```java
-// Criamos o objeto na memória e o controle 'e1' aponta para ele
-Estudante e1 = new Estudante(); 
-e1.estudar(); // Acionamos o comportamento do objeto
-
-// e2 recebe a CÓPIA da referência. Agora temos dois controles para o MESMO objeto
-Estudante e2 = e1; 
-e2.setNota(9.5); // Alteramos o objeto através do controle e2
-
-// Como o objeto é o mesmo, e1 também verá a mudança
-System.out.println(e1.getNota()); // Saída: 9.5
-
-```
-
+* Uma variável de referência é capaz de armazenar a localização (endereço na memória) de um objeto.
+    * **O Controle Remoto**: Imagine que a variável é o controle remoto e o objeto é o aparelho de TV.
+    * **Invocação de Métodos**: Usamos o "controle" (variável de referência) para acionar um "botão" (método) do objeto através do operador ponto (`.`).
+ 
 ## 2. Método Construtor
 
 O construtor é um tipo especial de método utilizado para criar e inicializar objetos.
 
 * **Objetivo**: Garantir que o objeto seja criado com um estado inicial consistente e válido.
-
-
 * **Regras**: Deve ter o mesmo nome da classe e não possui tipo de retorno, nem mesmo `void`.
-
-
 * **Invocação**: É chamado automaticamente quando o objeto é criado através do comando `new`.
-
-```java
-public class Estudante {
-    private String nome;
-
-    // Construtor: Inicializa o atributo nome no momento do 'new'
-    public Estudante(String nomeInicial) {
-        this.nome = nomeInicial; [cite_start]// 'this' diferencia o atributo do parâmetro [cite: 908]
-    }
-}
-
-```
-
----
-
+ 
 ## 3. Anatomia de Métodos e Encapsulamento
 
 O encapsulamento protege os dados internos da classe, garantindo a integridade da informação.
@@ -68,9 +29,80 @@ O encapsulamento protege os dados internos da classe, garantindo a integridade d
 * **`private`**: O acesso é restrito exclusivamente ao interior da própria classe.
 * **`protected`**: Visível para classes no mesmo pacote e subclasses, mesmo em pacotes diferentes.
 
-### Getters e Setters:
+## 4. Getters e Setters:
 
 São métodos públicos usados para ler (get) e alterar (set) atributos privados, permitindo validações.
+
+## 5. Coesão e Acoplamento
+
+* **Coesão**: Refere-se à organização interna. Uma classe coesa tem uma responsabilidade única e clara. Se a classe `Estudante` também imprimir boletos financeiros, ela perde coesão.
+* **Acoplamento**: Nível de dependência entre classes. Buscamos o **baixo acoplamento** para que as classes sejam independentes.
+
+* **Exemplo Prático**:
+
+```java
+
+//Classe é a generalização
+class Estudante {
+    //Atributos
+    private String nome; 
+    private int matricula;
+    protected double nota; // Modificador protected: visível no mesmo pacote ou por herança
+
+    // Construtor
+    public Estudante(String nome, int matricula) {
+        this.nome = nome; // 'this' diferencia o atributo do parâmetro.
+        this.matricula = matricula;
+    }
+
+    // Setter com validação: Protege o atributo 'nota' (Regra de Negócio)
+    public void setNota(double nota) {
+        if (nota >= 0 && nota <= 10) {
+            this.nota = nota;
+        } else {
+            System.out.println("Erro: Nota " + nota + " inválida para o aluno " + this.nome);
+        }
+    }
+
+    // Getter: Forma segura de acessar o atributo privado
+    public double getNota() {
+        return this.nota;
+    }
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    // Comportamento do objeto
+    public void estudar() {
+        System.out.println(this.nome + " está estudando Estrutura de Dados...");
+    }
+}
+```
+```java
+public class Main {
+    public static void main(String[] args) {
+        // 'new' aloca espaço e retorna o endereço
+        Estudante e1 = new Estudante("Bruna", 202601);
+        
+        e1.setNota(9.5);
+        e1.estudar();
+
+        Estudante e2 = e1; 
+        e2.setNota(10.0); // Alteramos o objeto através do segundo controle
+
+        System.out.println("Nota visualizada pelo controle e1: " + e1.getNota()); // Saída: 10.0
+
+        List<Estudante> ads = new ArrayList<>();
+        ads.add(e1);
+        
+        Turma aulaHoje = new Turma(ads);
+        aulaHoje.exibirRelatorio();
+    }
+}
+```
+
+
 
 ```java
 public class Estudante {
@@ -93,50 +125,5 @@ public class Estudante {
 
 ```
 
----
-
-## 4. Coesão e Acoplamento
-
-* **Coesão**: Refere-se à organização interna. Uma classe coesa tem uma responsabilidade única e clara. Se a classe `Estudante` também imprimir boletos financeiros, ela perde coesão.
-* **Acoplamento**: Nível de dependência entre classes. Buscamos o **baixo acoplamento** para que as classes sejam independentes.
-
-### Exemplo de Baixo Acoplamento (Injeção de Dependência):
-
-```java
-public class Turma {
-    private List<Estudante> alunos;
-
-    // A Turma não cria os alunos (new), ela os RECEBE prontos.
-    // Isso diminui a dependência direta entre Turma e a criação de Estudante.
-    public Turma(List<Estudante> alunosExternos) {
-        this.alunos = alunosExternos;
-    }
-}
-
-```
-
----
-
-## 5. Organização por Pacotes
-
-Pacotes servem para agrupar classes relacionadas, organizar o espaço de nomes (*namespace*) e controlar a visibilidade.
-* **Convenção**: Nomes em letras minúsculas.
-* **Estrutura**: Reflete a hierarquia de diretórios no sistema de arquivos.
-
-```java
-// Localizado em: src/br/com/pucgoias/model/Estudante.java
-package br.com.pucgoias.model; 
-
-public class Estudante {
-    // Membros da classe...
-}
-
-```
-
 ## Exercícios de Fixação
 
-1. **O Construtor**: Crie uma classe `Estudante` que exija `nome` e `matricula` no construtor. Tente instanciar um objeto sem passar esses dados e explique o erro de compilação.
-2. **O Controle Remoto**: No `main`, crie `Estudante e1` e atribua a nota 8.0. Crie `Estudante e2 = e1`. Altere a nota para 10.0 usando `e2`. Imprima a nota de `e1`. Justifique o resultado com base no conceito de referência.
-3. **Encapsulamento e Protected**: Altere o atributo `nota` para `protected`. Crie uma classe em um pacote diferente e tente acessar `aluno.nota` diretamente. O que acontece? Como o encapsulamento resolveria isso?
-
----
