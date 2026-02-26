@@ -105,21 +105,18 @@ public class Main {
 
 
 ```java
-public class Estudante {
-    private double nota; // Atributo protegido pelo encapsulamento
 
-    // Setter: Portão de entrada com validação (Regra de Negócio)
-    public void setNota(double novaNota) {
-        if (novaNota >= 0 && novaNota <= 10) {
-            this.nota = novaNota;
-        } else {
-            System.out.println("Nota inválida!");
-        }
+class Turma {
+    private List<Estudante> lista;
+
+    public Turma(List<Estudante> alunosExternos) {
+        this.lista = alunosExternos;
     }
 
-    // Getter: Saída segura do dado
-    public double getNota() {
-        return this.nota;
+    public void exibirRelatorio() {
+        for (Estudante e : lista) {
+            System.out.println("Aluno: " + e.getNome() + " | Nota: " + e.getNota());
+        }
     }
 }
 
