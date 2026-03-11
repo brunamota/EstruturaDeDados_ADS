@@ -14,18 +14,29 @@ Os arrays são as estruturas de dados mais simples e fundamentais para um desenv
 * São estruturas lineares sequencialmente numeradas.
 
 ```java 
-// Declaração e alocação de um vetor para 5 notas
-double[] notas = new double[5]; 
+  public class Vetor {
+    public static void main(String[] args) {
+        // Declaração e alocação de um vetor para 5 notas
+        double[] notas = new double[5];
 
-// Atribuição de valores via índice
-notas[0] = 8.5;
-notas[1] = 7.0;
-notas[2] = 9.0;
-notas[3] = 6.5;
-notas[4] = 10.0;
+        //  0  1  2  3  4
+        // [ ][ ][ ][ ][ ]
 
-// Acessando um valor específico
-System.out.println("A primeira nota é: " + notas[0]); // Saída: 8.5
+        // Atribuição de valores via índice
+        notas[0] = 8.5;
+        notas[1] = 7.0;
+        notas[2] = 9.0;
+        notas[3] = 6.5;
+        notas[4] = 10.0;
+
+        System.out.println("A primeira nota é: " + notas[0]); // Saída: 8.5
+
+        // Imprima todos os valores do vetor
+        for (double nota : notas) {
+            System.out.print(nota + " ");
+        }
+    }
+}
 ```
 
 ### Matrizes (Multidimensionais)
@@ -34,15 +45,30 @@ System.out.println("A primeira nota é: " + notas[0]); // Saída: 8.5
 * Podem possuir *n* dimensões (cubos, etc.), exigindo um índice para cada dimensão para acessar o conteúdo.
 
 ```java 
-// Declaração de uma matriz: 2 alunos (linhas) e 2 bimestres (colunas) [cite: 2103]
-double[][] boletim = new double[2][2];
+public class Matriz {
+    public static void main(String[] args) {
 
-// Aluno 0, Bimestre 0
-boletim[0][0] = 8.0;
-// Aluno 1, Bimestre 1
-boletim[1][1] = 7.5;
+        // Declaração de uma matriz: 2 alunos (linhas) e 2 bimestres (colunas) 
+        double[][] boletim = new double[2][2];
+        //    0   1
+        // 0 [ ] [ ]
+        // 1 [ ] [ ]
 
-System.out.println("Nota do Aluno 1 no 2º Bimestre: " + boletim[1][1]); // Saída: 7.5 [cite: 2107]
+        // Aluno 0, Bimestre 0
+        boletim[0][0] = 8.0;
+        // Aluno 1, Bimestre 1
+        boletim[1][1] = 7.5;
+
+        System.out.println("Nota do Aluno 1 no 2º Bimestre: " + boletim[1][1]); // Saída: 7.5;
+
+        for (int i = 0; i < boletim.length; i++) {
+            for (int j = 0; j < boletim[i].length; j++) {
+                System.out.print("[" + boletim[i][j] + "] ");
+            }
+            System.out.println();
+        }
+    }
+}
 ```
 
 ### Regras Práticas em Java
@@ -74,11 +100,11 @@ Em Java, utilizamos a classe `Stack` do pacote `java.util`. Os principais métod
 >> O E significa Element (Elemento). Ele indica que o método retornará um objeto do mesmo tipo que você definiu para a pilha. Como as estruturas de dados no Java são homogêneas (aceitam apenas um tipo de dado por vez), o compilador usa o E para garantir que você receba exatamente o que guardou.
 
  ```java 
-import java.util.Stack; // Necessário importar [cite: 1785]
+import java.util.Stack; // Necessário importar
 
 public class ExemploPilha {
     public static void main(String[] args) {
-        // Declaração da Pilha [cite: 1672]
+        // Declaração da Pilha
         Stack<String> historico = new Stack<>();
 
         // 1. push: Adiciona elementos ao topo 
@@ -148,7 +174,7 @@ import java.util.Scanner;
 public class RespostaVetor {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
-        double[] notas = new double[5]; // Declaração de vetor com 5 posições[cite: 2017].
+        double[] notas = new double[5]; // Declaração de vetor com 5 posições
 
         // Leitura das notas
         for (int i = 0; i < 5; i++) {
@@ -159,7 +185,7 @@ public class RespostaVetor {
         System.out.println("\nNotas em índices pares (0, 2, 4):");
         // Exibição apenas dos índices pares
         for (int i = 0; i < 5; i++) {
-            if (i % 2 == 0) { // Verifica se o índice é par[cite: 2032].
+            if (i % 2 == 0) { // Verifica se o índice é par
                 System.out.println("Índice [" + i + "]: " + notas[i]);
             }
         }
@@ -174,19 +200,19 @@ import java.util.Stack;
 
 public class RespostaPilha {
     public static void main(String[] args) {
-        Stack<String> nomes = new Stack<>(); // Criando a pilha[cite: 1672].
+        Stack<String> nomes = new Stack<>(); // Criando a pilha
 
-        // Inserindo 4 nomes (push) [cite: 1706]
+        // Inserindo 4 nomes (push)
         nomes.push("Bruna");
         nomes.push("Ricardo");
         nomes.push("Mateus");
         nomes.push("Ana"); // Topo atual
 
-        // Removendo dois nomes (pop) [cite: 1744]
+        // Removendo dois nomes (pop) 
         nomes.pop(); // Remove "Ana"
         nomes.pop(); // Remove "Mateus"
 
-        // Verificando o topo (peek) [cite: 1790]
+        // Verificando o topo (peek) 
         System.out.println("Nome que restou no topo: " + nomes.peek()); // Saída: Ricardo
     }
 }
@@ -197,12 +223,12 @@ public class RespostaPilha {
 ```java
 public class RespostaMatriz {
     public static void main(String[] args) {
-        // Declaração de matriz 3x3 [cite: 2103]
+        // Declaração de matriz 3x3 
         int[][] matriz = new int[3][3];
 
         // Inicializando com zero (opcional em Java, pois int inicia em 0 por padrão)
-        for (int i = 0; i < 3; i++) { // Percorre linhas [cite: 2116]
-            for (int j = 0; j < 3; j++) { // Percorre colunas [cite: 2118]
+        for (int i = 0; i < 3; i++) { // Percorre linhas 
+            for (int j = 0; j < 3; j++) { // Percorre colunas 
                 matriz[i][j] = 0;
             }
         }
