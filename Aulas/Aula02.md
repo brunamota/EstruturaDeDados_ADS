@@ -71,6 +71,9 @@ Em Java, utilizamos a classe `Stack` do pacote `java.util`. Os principais métod
 | `empty()` | Booleano | Verifica se a pilha está vazia. |
 | `size()` | int | Retorna a quantidade de elementos na pilha. |
 
+>> O E significa Element (Elemento). Ele indica que o método retornará um objeto do mesmo tipo que você definiu para a pilha.
+>> Como as estruturas de dados no Java são homogêneas (aceitam apenas um tipo de dado por vez), o compilador usa o E para garantir que você receba exatamente o que guardou.
+
  ```java 
 import java.util.Stack; // Necessário importar [cite: 1785]
 
