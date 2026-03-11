@@ -97,31 +97,35 @@ Em Java, utilizamos a classe `Stack` do pacote `java.util`. Os principais métod
 | `empty()` | Booleano | Verifica se a pilha está vazia. |
 | `size()` | int | Retorna a quantidade de elementos na pilha. |
 
->> O E significa Element (Elemento). Ele indica que o método retornará um objeto do mesmo tipo que você definiu para a pilha. Como as estruturas de dados no Java são homogêneas (aceitam apenas um tipo de dado por vez), o compilador usa o E para garantir que você receba exatamente o que guardou.
+> O E significa Element (Elemento). Ele indica que o método retornará um objeto do mesmo tipo que você definiu para a pilha. Como as estruturas de dados no Java são homogêneas (aceitam apenas um tipo de dado por vez), o compilador usa o E para garantir que você receba exatamente o que guardou.
 
  ```java 
-import java.util.Stack; // Necessário importar
+import java.util.Stack;
 
-public class ExemploPilha {
+public class Pilha {
     public static void main(String[] args) {
         // Declaração da Pilha
         Stack<String> historico = new Stack<>();
 
-        // 1. push: Adiciona elementos ao topo 
+        // 1. push: Adiciona elementos ao topo
         historico.push("Página Inicial");
         historico.push("Lista de Alunos");
         historico.push("Perfil do Aluno");
 
-        // 2. peek: Mostra o topo sem remover 
+        System.out.println(historico); //imprimir a pilha construída
+
+        // 2. peek: Mostra o topo sem remover
         System.out.println("No topo agora: " + historico.peek()); // Saída: Perfil do Aluno
 
-        // 3. pop: Remove o elemento do topo 
+        // 3. pop: Remove o elemento do topo
         String removido = historico.pop();
         System.out.println("Removido: " + removido); // Saída: Perfil do Aluno
 
-        // 4. empty: Verifica se está vazia 
+        // 4. empty: Verifica se está vazia
         System.out.println("A pilha está vazia? " + historico.empty()); // Saída: false
     }
+}
+
 }
 ```
 
