@@ -139,6 +139,82 @@ public class Aula02 {
 ## Exercícios de Fixação
 
 1. **Manipulação de Vetores**: Crie um programa que leia 5 notas de alunos em um vetor e exiba apenas as notas que estão na posição (índice) par.
+
+```java
+import java.util.Scanner;
+
+public class RespostaVetor {
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+        double[] notas = new double[5]; // Declaração de vetor com 5 posições[cite: 2017].
+
+        // Leitura das notas
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Digite a nota do aluno " + (i + 1) + ": ");
+            notas[i] = ler.nextDouble();
+        }
+
+        System.out.println("\nNotas em índices pares (0, 2, 4):");
+        // Exibição apenas dos índices pares
+        for (int i = 0; i < 5; i++) {
+            if (i % 2 == 0) { // Verifica se o índice é par[cite: 2032].
+                System.out.println("Índice [" + i + "]: " + notas[i]);
+            }
+        }
+    }
+}
+```
+
 2. **Lógica de Pilha**: Implemente uma pilha de nomes. Insira 4 nomes e use o método `pop()` duas vezes. Ao final, use o `peek()` para dizer qual nome restou no topo.
-3. **Matriz:** Declare uma matriz $3 \times 3$ e inicialize-a com o valor zero em todas as posições .
+
+```java
+import java.util.Stack;
+
+public class RespostaPilha {
+    public static void main(String[] args) {
+        Stack<String> nomes = new Stack<>(); // Criando a pilha[cite: 1672].
+
+        // Inserindo 4 nomes (push) [cite: 1706]
+        nomes.push("Bruna");
+        nomes.push("Ricardo");
+        nomes.push("Mateus");
+        nomes.push("Ana"); // Topo atual
+
+        // Removendo dois nomes (pop) [cite: 1744]
+        nomes.pop(); // Remove "Ana"
+        nomes.pop(); // Remove "Mateus"
+
+        // Verificando o topo (peek) [cite: 1790]
+        System.out.println("Nome que restou no topo: " + nomes.peek()); // Saída: Ricardo
+    }
+}
+```
+
+3. **Matriz:** Declare uma matriz $3 \times 3$ e inicialize-a com o valor zero em todas as posições.
+
+```java
+public class RespostaMatriz {
+    public static void main(String[] args) {
+        // Declaração de matriz 3x3 [cite: 2103]
+        int[][] matriz = new int[3][3];
+
+        // Inicializando com zero (opcional em Java, pois int inicia em 0 por padrão)
+        for (int i = 0; i < 3; i++) { // Percorre linhas [cite: 2116]
+            for (int j = 0; j < 3; j++) { // Percorre colunas [cite: 2118]
+                matriz[i][j] = 0;
+            }
+        }
+        
+        System.out.println("Matriz 3x3 inicializada com sucesso.");
+    }
+}
+```
+
 4. **Reflexão sobre Manutenção**: Por que devemos usar nomes de variáveis claros (Clean Code) e modularização em estruturas de dados?.
+
+A manutenção é uma parte crítica do ciclo de vida do software pelas seguintes razões:
+
+* Legibilidade: O código deve ser escrito para que outras pessoas consigam ler e entender; nomes claros evitam confusão sobre o que cada variável armazena.
+* Tempo de Vida: Em média, 80% do tempo de vida de um software é destinado a manutenções e correções, e não à criação inicial.
+* Modularização: Organizar o código em blocos (métodos/classes) permite que partes do sistema sejam testadas e reaproveitadas isoladamente, garantindo a qualidade do software.
+* Eficiência: Estruturas bem nomeadas e modularizadas facilitam a identificação de gargalos de desempenho e simplificam a modificação da lógica de dados sem impactar todo o sistema.
