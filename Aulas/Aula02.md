@@ -13,10 +13,37 @@ Os arrays são as estruturas de dados mais simples e fundamentais para um desenv
 * Representam um conjunto em forma de lista de valores.
 * São estruturas lineares sequencialmente numeradas.
 
+```java 
+// Declaração e alocação de um vetor para 5 notas
+double[] notas = new double[5]; 
+
+// Atribuição de valores via índice
+notas[0] = 8.5;
+notas[1] = 7.0;
+notas[2] = 9.0;
+notas[3] = 6.5;
+notas[4] = 10.0;
+
+// Acessando um valor específico
+System.out.println("A primeira nota é: " + notas[0]); // Saída: 8.5
+```
+
 ### Matrizes (Multidimensionais)
 
 * A forma mais comum é a **bidimensional** (tabela), composta por linhas e colunas.
 * Podem possuir *n* dimensões (cubos, etc.), exigindo um índice para cada dimensão para acessar o conteúdo.
+
+```java 
+// Declaração de uma matriz: 2 alunos (linhas) e 2 bimestres (colunas) [cite: 2103]
+double[][] boletim = new double[2][2];
+
+// Aluno 0, Bimestre 0
+boletim[0][0] = 8.0;
+// Aluno 1, Bimestre 1
+boletim[1][1] = 7.5;
+
+System.out.println("Nota do Aluno 1 no 2º Bimestre: " + boletim[1][1]); // Saída: 7.5 [cite: 2107]
+```
 
 ### Regras Práticas em Java
 
@@ -32,9 +59,7 @@ A pilha é uma estrutura que aplica a disciplina de acesso **UEPS** (Último que
 * **Inserção/Remoção**: Todas as operações são realizadas no **final** (topo) da estrutura.
 * **Utilidade**: Tornar disponíveis primeiro os elementos mais recentes, como o botão "Desfazer" de editores ou o histórico de navegação.
 
-
-
-## 4. Métodos da Classe Stack em Java
+### Métodos da Classe Stack em Java
 
 Em Java, utilizamos a classe `Stack` do pacote `java.util`. Os principais métodos são:
 
@@ -45,6 +70,32 @@ Em Java, utilizamos a classe `Stack` do pacote `java.util`. Os principais métod
 | `peek()` | E | Mostra o elemento do topo sem removê-lo. |
 | `empty()` | Booleano | Verifica se a pilha está vazia. |
 | `size()` | int | Retorna a quantidade de elementos na pilha. |
+
+ ```java 
+import java.util.Stack; // Necessário importar [cite: 1785]
+
+public class ExemploPilha {
+    public static void main(String[] args) {
+        // Declaração da Pilha [cite: 1672]
+        Stack<String> historico = new Stack<>();
+
+        // 1. push: Adiciona elementos ao topo 
+        historico.push("Página Inicial");
+        historico.push("Lista de Alunos");
+        historico.push("Perfil do Aluno");
+
+        // 2. peek: Mostra o topo sem remover 
+        System.out.println("No topo agora: " + historico.peek()); // Saída: Perfil do Aluno
+
+        // 3. pop: Remove o elemento do topo 
+        String removido = historico.pop();
+        System.out.println("Removido: " + removido); // Saída: Perfil do Aluno
+
+        // 4. empty: Verifica se está vazia 
+        System.out.println("A pilha está vazia? " + historico.empty()); // Saída: false
+    }
+}
+```
 
 ## 5. Implementação Prática (Contexto Alunos)
 
@@ -87,15 +138,7 @@ public class Aula02 {
 
 ## Exercícios de Fixação
 
-1. 
-**Manipulação de Vetores**: Crie um programa que leia 5 notas de alunos em um vetor e exiba apenas as notas que estão na posição (índice) par.
-
-
+1. **Manipulação de Vetores**: Crie um programa que leia 5 notas de alunos em um vetor e exiba apenas as notas que estão na posição (índice) par.
 2. **Lógica de Pilha**: Implemente uma pilha de nomes. Insira 4 nomes e use o método `pop()` duas vezes. Ao final, use o `peek()` para dizer qual nome restou no topo.
-3. 
-**Reflexão sobre Manutenção**: Por que devemos usar nomes de variáveis claros (Clean Code) e modularização em estruturas de dados?.
-
-
-**Sugestão Docente:** Bruna, ao explicar o código, enfatize que o `alunos.length` (vetor) e o `pilha.size()` (pilha) são fundamentais para percorrer as estruturas sem causar erros de limite de memória (*IndexOutOfBounds*).
-
-Deseja que eu prepare o **PDF de leitura complementar** focado nos exemplos de matrizes bidimensionais para os alunos aprofundarem o estudo de arrays?
+3. **Matriz:** Declare uma matriz $3 \times 3$ e inicialize-a com o valor zero em todas as posições .
+4. **Reflexão sobre Manutenção**: Por que devemos usar nomes de variáveis claros (Clean Code) e modularização em estruturas de dados?.
