@@ -22,7 +22,6 @@ import java.util.Queue;
 
 public class Filas {
     public static void main(String[] args) {
-        
         // Em Java, usamos LinkedList para implementar a interface Queue
         Queue<String> filaAtendimento = new LinkedList<>();
 
@@ -30,6 +29,12 @@ public class Filas {
         filaAtendimento.add("Bruna");
         filaAtendimento.add("Ricardo");
         filaAtendimento.add("Mateus");
+
+        int i=0;
+        for (String aluno: filaAtendimento){
+            i++;
+            System.out.println(i+ "º " + aluno);
+        }
 
         System.out.println("Primeiro da fila: " + filaAtendimento.peek());
 
