@@ -58,16 +58,20 @@ Diferente do Array, onde os dados estão vizinhos na memória, na Lista Encadead
 
 ```java
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Listas {
     public static void main(String[] args) {
         // Lista dinâmica de contatos
         LinkedList<String> listaContatos = new LinkedList<>();
 
-        listaContatos.add("Ana");
-        listaContatos.add("Carlos");
-        
+        listaContatos.add("Ana"); 
+        listaContatos.add("Carlos"); 
+
+        System.out.println("\nLista de Contatos:");
+        for (String contato : listaContatos) {
+            System.out.println("- " + contato);
+        }
+
         // Inserção facilitada no meio da lista
         listaContatos.add(1, "Beatriz"); // Beatriz entra entre Ana e Carlos
 
