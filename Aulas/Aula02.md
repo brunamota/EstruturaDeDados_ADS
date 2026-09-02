@@ -4,20 +4,32 @@
 
 À medida que os desafios computacionais aumentam, variáveis simples (como `int` ou `double`) deixam de ser suficientes. As **estruturas de dados** surgem da necessidade de organizar conjuntos de informações na memória do computador para facilitar o manuseio e melhorar o desempenho das aplicações.
 
-## 2. Arrays (Vetores e Matrizes)
+### Regras Práticas em Java
+
+* **Zero-based**: A numeração das posições (índices) começa sempre em **0**.
+* **Acesso Aleatório**: É possível acessar qualquer elemento individualmente sem uma ordem preestabelecida.
+* **Declaração**: É necessário informar o nome, o tamanho e o tipo de dado.
+
+## 2. Arrays (Vetores)
 
 Os arrays são as estruturas de dados mais simples e fundamentais para um desenvolvedor. Eles são conjuntos de dados **homogêneos** (armazenam apenas um tipo de dado básico) e **indexados**.
+
+Em Java, um vetor tradicional exige que você defina o seu **tamanho exato** no momento em que ele é criado. O Java precisa saber quanta memória reservar para ele.
 
 ### Vetores (Unidimensionais)
 
 * Representam um conjunto em forma de lista de valores.
 * São estruturas lineares sequencialmente numeradas.
 
-```java 
+**Formas corretas de declarar um vetor:**
+
+```java
   public class Vetor {
     public static void main(String[] args) {
-        // Declaração e alocação de um vetor para 5 notas
-        double[] notas = new double[5];
+        // 1. Quando sabemos o tamanho, mas não os valores:
+        double[] notas = new double[5]; // Cria um vetor com 5 espaços (índices 0 a 4)
+        // 2. Quando já sabemos os valores:
+        double[] notasDefinidas = {8.5, 9.0, 7.2}; // O tamanho é definido automaticamente (3 espaços)
 
         //  0  1  2  3  4
         // [ ][ ][ ][ ][ ]
@@ -39,30 +51,73 @@ Os arrays são as estruturas de dados mais simples e fundamentais para um desenv
 }
 ```
 
+* Muitas vezes, não sabemos de antemão quantos itens vamos precisar armazenar. Para isso, o Java possui a classe ArrayList.
+* O ArrayList funciona como um "vetor dinâmico": ele cresce automaticamente à medida que adicionamos novos elementos e diminui quando removemos.
+
+Exemplo Prático com Strings:
+Para utilizar, precisamos importar as classes List e ArrayList do pacote java.util. Veja o exemplo abaixo:
+
+``` java 
+import java.util.ArrayList;
+import java.util.List;
+
+public class ExemploArrayList {
+    public static void main(String[] args) {
+        
+        // Declarando um vetor dinâmico de Strings
+        List<String> nomes = new ArrayList<>();
+
+        // Adicionando elementos (não precisamos definir limite de espaços)
+        nomes.add("Ana");
+        nomes.add("Carlos");
+        nomes.add("Beatriz");
+
+        // Acessando um elemento pelo índice
+        System.out.println("Primeiro nome: " + nomes.get(0));
+
+        // Descobrindo o tamanho atual da lista
+        System.out.println("Tamanho da lista: " + nomes.size());
+        
+        // Removendo um elemento
+        nomes.remove("Carlos"); 
+    }
+}
+```
+**Importante: ArrayList e Tipos Primitivos**
+* O ArrayList não aceita tipos primitivos diretamente (int, double, boolean). Para guardar números, você deve usar as Classes Wrapper correspondentes:
+  * `int` -> `Integer`
+  * `double` -> `Double`
+
 ### Matrizes (Multidimensionais)
 
 * A forma mais comum é a **bidimensional** (tabela), composta por linhas e colunas.
 * Podem possuir *n* dimensões (cubos, etc.), exigindo um índice para cada dimensão para acessar o conteúdo.
+* **Ordem de declaração:** Em Java, o primeiro colchete sempre representa as **linhas** e o segundo representa as **colunas**. O formato é: `tipo[][] nome = new tipo[linhas][colunas];`.
 
+```java 
 ```java 
 public class Matriz {
     public static void main(String[] args) {
 
         // Declaração de uma matriz: 2 alunos (linhas) e 2 bimestres (colunas) 
+        // Lembre-se: new double[quantidade_linhas][quantidade_colunas]
         double[][] boletim = new double[2][2];
-        //    0   1
-        // 0 [ ] [ ]
-        // 1 [ ] [ ]
+        
+        // Representação visual:
+        //      Col 0   Col 1
+        // Lin 0 [ ]     [ ]
+        // Lin 1 [ ]     [ ]
 
-        // Aluno 0, Bimestre 0
+        // Linha 0 (Aluno 0), Coluna 0 (Bimestre 0)
         boletim[0][0] = 8.0;
-        // Aluno 1, Bimestre 1
+        // Linha 1 (Aluno 1), Coluna 1 (Bimestre 1)
         boletim[1][1] = 7.5;
 
         System.out.println("Nota do Aluno 1 no 2º Bimestre: " + boletim[1][1]); // Saída: 7.5;
 
-        for (int i = 0; i < boletim.length; i++) {
-            for (int j = 0; j < boletim[i].length; j++) {
+        // Percorrendo a matriz
+        for (int i = 0; i < boletim.length; i++) { // boletim.length controla as linhas
+            for (int j = 0; j < boletim[i].length; j++) { // boletim[i].length controla as colunas daquela linha
                 System.out.print("[" + boletim[i][j] + "] ");
             }
             System.out.println();
@@ -70,12 +125,41 @@ public class Matriz {
     }
 }
 ```
+Assim como os vetores tradicionais, as matrizes usando `[][]` possuem um tamanho fixo. Se você precisar de uma tabela onde a quantidade de linhas ou colunas pode crescer dinamicamente (por exemplo, você não sabe quantos alunos serão cadastrados), você pode usar o conceito de Lista de Listas com ArrayList.
 
-### Regras Práticas em Java
+Basicamente, criamos uma "Lista principal" (que representa as linhas), e dentro dela guardamos outras Listas (que representam as colunas).
 
-* **Zero-based**: A numeração das posições (índices) começa sempre em **0**.
-* **Acesso Aleatório**: É possível acessar qualquer elemento individualmente sem uma ordem preestabelecida.
-* **Declaração**: É necessário informar o nome, o tamanho e o tipo de dado .
+``` java
+import java.util.ArrayList;
+import java.util.List;
+
+public class MatrizDinamica {
+    public static void main(String[] args) {
+        
+        // 1. Declarando a matriz dinâmica (Uma Lista que guarda Listas de Doubles)
+        List<List<Double>> boletimDinamico = new ArrayList<>();
+
+        // 2. Criando a primeira linha (Notas do Aluno 1)
+        List<Double> notasAluno1 = new ArrayList<>();
+        notasAluno1.add(8.0); // Bimestre 1
+        notasAluno1.add(7.5); // Bimestre 2
+
+        // 3. Criando a segunda linha (Notas do Aluno 2)
+        List<Double> notasAluno2 = new ArrayList<>();
+        notasAluno2.add(9.0); // Bimestre 1
+        notasAluno2.add(9.5); // Bimestre 2
+
+        // 4. Adicionando as linhas na matriz principal
+        boletimDinamico.add(notasAluno1); // Fica na Linha 0
+        boletimDinamico.add(notasAluno2); // Fica na Linha 1
+
+        // 5. Acessando um elemento específico: get(linha).get(coluna)
+        // Pegando a nota do Aluno 2 (Linha 1) no Bimestre 2 (Coluna 1)
+        double nota = boletimDinamico.get(1).get(1); 
+        System.out.println("Nota do Aluno 2 no 2º Bimestre: " + nota); // Saída: 9.5
+    }
+}
+```
 
 ## 3. Estrutura de Dados Pilha (Stack)
 
